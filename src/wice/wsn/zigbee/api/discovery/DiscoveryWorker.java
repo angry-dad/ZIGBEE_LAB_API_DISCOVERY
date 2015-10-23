@@ -8,6 +8,7 @@ import javax.swing.SwingWorker;
 
 import com.digi.xbee.api.XBeeDevice;
 import com.digi.xbee.api.XBeeNetwork;
+import com.digi.xbee.api.utils.HexUtils;
 
 public class DiscoveryWorker extends SwingWorker<String, String> {
 
@@ -45,7 +46,7 @@ public class DiscoveryWorker extends SwingWorker<String, String> {
 			myXBeeNetwork.addDiscoveryListener(discoveryCallback = new DiscoveryListener(this));
 			myXBeeNetwork.startDiscoveryProcess();
 
-			publish("Discovering remote XBee devices...");
+			publish("Discovering remote XBee devices on PAN ID: " + HexUtils.prettyHexString((myDevice.getPANID())));
 			while (!this.isCancelled()) {
 
 			}
