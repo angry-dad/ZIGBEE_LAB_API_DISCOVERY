@@ -55,8 +55,11 @@ public class DiscoveryWorker extends SwingWorker<String, String> {
 
 		} finally {
 			myDevice.close();
-			myXBeeNetwork.removeDiscoveryListener(discoveryCallback);
-			myXBeeNetwork.stopDiscoveryProcess();
+			if (myXBeeNetwork != null) {
+				myXBeeNetwork.stopDiscoveryProcess();
+				myXBeeNetwork.removeDiscoveryListener(discoveryCallback);
+			}
+
 			publish("done");
 			this.cancel(true);
 		}
