@@ -69,7 +69,6 @@ public class DiscoveryWorker extends SwingWorker<String, String> {
 
 	@Override
 	protected void process(List<String> chunks) {
-		// TODO Auto-generated method stub
 		for (final String string : chunks) {
 			if (string.equals("done")) {
 				btnDiscover.setEnabled(true);
